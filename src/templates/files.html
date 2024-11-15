@@ -1,0 +1,71 @@
+{% extends "home.html" %}
+
+{% block content %}
+
+<div>
+    {% if all_files|length == 0 %}
+        <h2>&nbsp;&nbsp;&nbsp;No files here yet</h2>
+    {% else %}
+    <div class="grid-container">
+        
+            {% for file in all_files %}
+            <div
+                class="grid-item" data-fileId="{{ file.id }}"
+                onclick="showContextMenu(event, '{{ file.id }}')"
+            >
+                {% set extension = 'icons/' + file.filename.split('.')[-1] + '.svg' %}
+                <img src="{{ url_for('static', path=extension) }}" alt="File Icon" class="file-icon"
+                onerror="this.onerror=null; this.src='{{ url_for('static', path='icons/txt.svg') }}';"
+                >
+                {% if file.is_private %}
+                <div class="private file-name">{{ file.filename }}</div>
+                {% else %}
+                <div class="file-name">{{ file.filename }}</div>
+                {% endif %}
+
+                {% if current_user.is_superuser %}
+                <div class="tooltip" id="tooltip-{{ file.id }}">
+                    Downloads: {{ file.downloads }}
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+    </div>
+    {% endif %}
+
+    <div id="context-menu" class="context-menu">
+        <ul>
+            <a href="#" onclick="performAction('download')"><li>Download</li></a>
+            {% if current_user.is_superuser %}
+            <a href="#" onclick="performAction('delete')"><li>Delete</li></a>
+            <a href="#" onclick="performAction('toggleprivacy')"><li>Toggle privacy</li></a>
+            {% endif %}
+        </ul>
+    </div>
+    <br>
+    <br>
+
+    {% if current_user.is_superuser %}
+
+    <form class="form-container" id="fileForm" action="/upload" method="post" enctype="multipart/form-data">
+        <div class="file-upload-container" id="fileUploadContainer">
+            <p class="file-upload-text">Drag file here or click</p>
+            <input type="file" class="file-upload-input" id="fileInput" name="file" />
+            <label for="fileInput" class="file-upload-label">Choose a file</label>
+            <div id="fileName" style="margin-top: 8px;"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="privacyCheckbox">
+                <input type="checkbox" id="privacyCheckbox" name="is_private" value="public" />
+                Private&nbsp;&nbsp;&nbsp;
+                <button type="submit" class="submitBtn">Upload</button>
+            </label>
+        </div>
+        
+    </form>
+    {% endif %}
+    <br>
+</div>
+
+{% endblock content %}

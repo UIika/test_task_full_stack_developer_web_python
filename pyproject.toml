@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "src"
+version = "0.1.0"
+description = "Test Task Full Stack Developer (Web, Python)"
+authors = ["ulika <1lys.rynd@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = {extras = ["all"], version = "^0.115.4"}
+alembic = "^1.14.0"
+aiosqlite = "^0.20.0"
+bcrypt = "4.0.1"
+passlib = "^1.7.4"
+pyjwt = "^2.9.0"
+aiofiles = "^24.1.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

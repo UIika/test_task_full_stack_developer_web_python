@@ -1,0 +1,263 @@
+body {
+    margin: 0;
+    width: 100%;
+    color: white;
+}
+
+h1 {
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+:root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    margin: 0;
+    display: flex;
+    background-color:rgb(30, 30, 30);
+    height: 100vh;
+    width: 100%;
+}
+
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+.loginBtn {
+    margin: 0;
+    width: 100%;
+    height: 30px;
+    color: black;
+    background-color: hsla(0, 100%, 61%, 1);
+    border: 0;
+    border-radius: 5px;
+}
+
+.loginBtn:hover {
+    background-color: hsla(0, 100%, 41%, 1);
+}
+
+.loginInput {
+    display: block;
+    width: 200px;
+    height: 25px;
+    margin-bottom: 7px;
+    border-radius: 5px;
+    border: 0;
+}
+
+.already {
+    text-align: center;
+    font-size: smaller;
+    margin-top: 5px;
+    width: 200px;
+}
+
+a {
+    color: hsla(0, 100%, 61%, 1);
+    text-decoration: none;
+}
+
+.error-message {
+    color: hsla(0, 100%, 61%, 1);
+    text-align: center;
+    width: 190px;
+    margin-bottom: 5px;
+}
+
+.navbar {
+    background-color: rgb(15, 15, 15);
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    color: white;
+}
+
+.navbar h1 {
+    margin: 0;
+}
+
+.menu {
+    height: 100%;
+    width: 50%;
+}
+
+.menu-item {
+    height: 100%;
+    display: inline;
+    margin: 10px;
+}
+
+.menu-item>a:hover {
+    color: white;
+}
+
+.loginInfo {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.logout-button {
+    background-color: hsla(0, 100%, 61%, 1);
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+.logout-button:hover {
+    background-color: hsla(0, 100%, 41%, 1);
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px;
+    padding: 20px;
+}
+
+.grid-item {
+    width: 120px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.file-icon {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 8px;
+}
+
+.file-name {
+    width: 120px;
+    height: fit-content;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+}
+
+.private {
+    color: hsla(0, 100%, 61%, 1);
+}
+
+.file-upload-input {
+    display: none;
+}
+
+.file-upload-container {
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 2px dashed hsla(0, 100%, 61%, 1);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.file-upload-container.dragging {
+    border: 2px dashed hsla(0, 100%, 41%, 1);
+}
+
+.file-upload-text {
+    color: white;
+    font-size: 16px;
+}
+
+.file-upload-input {
+    display: none;
+}
+
+.file-upload-label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: hsla(0, 100%, 61%, 1);
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.file-upload-label:hover {
+    background-color: hsla(0, 100%, 41%, 1);
+}
+
+.submitBtn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: hsla(0, 100%, 61%, 1);
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.submitBtn:hover {
+    background-color: hsla(0, 100%, 41%, 1);
+}
+
+
+.form-group {
+    text-align: center;
+}
+
+.context-menu {
+    display: none;
+    position: absolute;
+    background-color: black;
+    border: 1px solid hsla(0, 100%, 61%, 1);
+    z-index: 1000;
+}
+
+.context-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 5px 0;
+}
+
+.context-menu li {
+    padding: 10px;
+    cursor: pointer;
+    color: white;
+}
+
+.context-menu li:hover {
+    background-color: hsla(0, 100%, 61%, 1);
+}
+
+.tooltip {
+    display: none;
+    position: absolute;
+    top: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: hsla(0, 100%, 61%, 1);
+    color: white;
+    padding: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    font-size: 16px;
+    white-space: nowrap;
+    z-index: 100;
+}
+
+.grid-item:hover .tooltip {
+    display: block;
+}

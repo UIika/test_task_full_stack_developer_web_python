@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block page %}
+
+<div>
+    <div class="navbar">
+        <div class="menu">
+            <div class="menu-item">
+                <a href="/"><h1 style="display: inline;">Files</h1></a>
+            </div>
+            {% if current_user.is_superuser %}
+            <div class="menu-item">
+                <a href="/users"><h1 style="display: inline;">Users</h1></a>
+            </div>
+            {% endif %}
+        </div>
+        <div class="loginInfo">
+            <div>Logged in as {{ current_user.name }}</div>
+            <div style="margin-top: 20px;"><a href="/logout" class="logout-button">Log Out</a></div>
+        </div>
+    </div>
+
+    {% set flash_messages = get_flash_messages(request) %}
+    {% if flash_messages %}
+        <br>
+        <div class="error-message" style="width: 100%; text-align: center;">
+            {% for message in flash_messages %}
+            {{ message }}
+            {% endfor %}
+        </div>
+    {% endif %}
+    
+    {% block content %}{% endblock content %}
+</div>
+
+{% endblock page %}

@@ -1,0 +1,43 @@
+{% extends "home.html" %}
+
+{% block content %}
+
+<div>
+
+    <div class="grid-container">
+        
+            {% for user in all_users %}
+            {% if user.id != current_user.id %}
+            <div
+                class="grid-item" data-fileId="{{ user.id }}"
+                onclick="showContextMenu(event, '{{ user.id }}')"
+            >
+                <img src="{{ url_for('static', path='icons/avatar.jpg') }}" alt="File Icon" class="file-icon" title="{{ user.email }}">
+                {% if user.is_superuser %}
+                <div class="private file-name">{{ user.name }}</div>
+                {% else %}
+                <div class="file-name">{{ user.name }}</div>
+                {% endif %}
+                {% if current_user.is_superuser %}
+                <div class="tooltip" id="tooltip-{{ user.id }}">
+                    Downloads: {{ user.downloads }}
+                </div>
+                {% endif %}
+            </div>
+            {% endif %}
+            {% endfor %}
+    </div>
+
+    <div id="context-menu" class="context-menu">
+        <ul>
+            <a href="#" onclick="performAction('toggleadmin')"><li>Toggle admin</li></a>
+        </ul>
+    </div>
+
+    {% if error_message %}
+    <div class="error-message" style="width: 100%; text-align: center;">{{ error_message }}</div>
+    {% endif %}
+    <br>
+</div>
+
+{% endblock content %}

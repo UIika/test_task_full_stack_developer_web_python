@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block page %}
+
+<div class="login">
+    <div>
+        {% set flash_messages = get_flash_messages(request) %}
+        {% if flash_messages %}
+            <br>
+            <div class="error-message" style="width: 100%; text-align: center;">
+                {% for message in flash_messages %}
+                {{ message }}
+                {% endfor %}
+            </div>
+        {% endif %}
+        <form method="post" action='/signup'>
+            <input
+                class="loginInput"
+                type="text"
+                placeholder="Username"
+                name="name"
+                required
+            />
+            <input
+                class="loginInput"
+                type="email"
+                placeholder="Email"
+                name="email"
+                required
+            />
+            <input
+                class="loginInput"
+                type="password"
+                placeholder="Password"
+                name="password"
+                required
+            />
+            <input
+                class="loginInput"
+                type="password"
+                placeholder="Confirm password"
+                name="password1"
+                required
+            />
+            <button
+                type="submit"
+                class="loginBtn"
+            >
+                Sign up
+            </button>
+        </form>
+        <div class="already">Already signed up? <a href="/login">Log in</a></div>
+    </div>
+</div>
+
+
+{% endblock page %}
