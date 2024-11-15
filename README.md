@@ -1,5 +1,7 @@
 # Test Task Full Stack Developer (Web, Python)
 
+![](recording.gif)
+
 ## How to run this app:
 
 Clone this repository:
