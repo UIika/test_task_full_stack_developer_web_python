@@ -1,8 +1,8 @@
-Test Task Full Stack Developer (Web, Python)
+# Test Task Full Stack Developer (Web, Python)
 
-To run project:
+## How to run this app:
 
-Clone this repository
+Clone this repository:
 
     git clone https://github.com/UIika/test_task_full_stack_developer_web_python
     cd test_task_full_stack_developer_web_python
