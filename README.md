@@ -9,7 +9,6 @@ Clone this repository
 
 Create ".env" file and add environment variables to it:
 ```dotenv
-# Base
 SQLITE_URL='sqlite+aiosqlite:///database.db'
 
 SECRET_KEY = 'secretkey'
