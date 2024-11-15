@@ -1,10 +1,7 @@
 import os
-import shutil
-from tempfile import NamedTemporaryFile
 from typing import Union
 from fastapi import APIRouter, Form, Header, Request, UploadFile
 from fastapi.templating import Jinja2Templates
-from sqlalchemy import update
 from src.models import File, User
 from src.schemas.files import FileCreate
 from src.schemas.users import UserCreate
@@ -112,8 +109,6 @@ async def logout(request: Request, current_user: CurrentUser):
     request.session.clear()
     return RedirectResponse('/', status_code=303)
 
-
-import aiofiles
 
 @router.post('/upload')
 async def upload(
