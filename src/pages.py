@@ -45,7 +45,6 @@ async def files_page(request: Request, session: SqliteSessionDep, current_user: 
 @router.get('/users')
 async def users_page(request: Request, session: SqliteSessionDep, current_user: CurrentSuperUser):
     all_users = await users.read(session)
-    print(all_users)
     return templates.TemplateResponse('users.html', {
         'request': request, 'all_users': all_users, 'current_user': current_user
     })
@@ -78,7 +77,6 @@ async def signup(request: Request, session: SqliteSessionDep):
         return RedirectResponse('/signup', status_code=303)
 
     new_user = await users.create(session, user_to_create)
-    print(new_user.is_superuser)
     return RedirectResponse('/login', status_code=303)
 
 
