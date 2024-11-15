@@ -15,9 +15,25 @@ if (fileUploadContainer !== null){
     fileUploadContainer.addEventListener('drop', (e) => {
         e.preventDefault();
         fileUploadContainer.classList.remove('dragging');
-        const file = e.dataTransfer.files[0];
-        fileInput.files = e.dataTransfer.files;
-        displayFileName(file);
+
+        
+        const items = e.dataTransfer.items;
+        let folderDetected = false;
+
+        for (let i = 0; i < items.length; i++) {
+            if (items[i].webkitGetAsEntry && items[i].webkitGetAsEntry().isDirectory) {
+                folderDetected = true;
+                break;
+            }
+        }
+
+        if (folderDetected) {
+            fileInput.value = '';
+        } else {
+            const file = e.dataTransfer.files[0];
+            fileInput.files = e.dataTransfer.files;
+            displayFileName(file);
+        }
     });
     
     fileInput.addEventListener('change', (e) => {
